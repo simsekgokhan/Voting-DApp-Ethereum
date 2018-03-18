@@ -1,5 +1,7 @@
 # Voting-DApp-Ethereum
 
+Simple Voting DApp using Ethereum and React.
+
 ### 1. Screenshot:  
 <h1>
   <img src="./src/screenshot.jpg" width="700">  
