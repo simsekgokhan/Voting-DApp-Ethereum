@@ -2,7 +2,7 @@
 
 ### 1. Screenshot:  
 <h1>
-  <img src="screenshot.jpg" width="700">  
+  <img src="./src/screenshot.jpg" width="700">  
 </h1>
 
 ### 2. Ethereum local blockchain & Smart Contract Setup (Server Side)
