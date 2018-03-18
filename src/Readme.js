@@ -34,7 +34,7 @@ VotingContract = web3.eth.contract(abiDefinition)
 byteCode = compiledCode.contracts[':Voting'].bytecode
 
 // Deploy
-deployedContract = VotingContract.new(['Rama','Nick','Jose'],{data: byteCode, from: web3.eth.accounts[0], gas: 4700000})
+deployedContract = VotingContract.new(['Alex','Nick','Jose'],{data: byteCode, from: web3.eth.accounts[0], gas: 4700000})
 
 // Show
 deployedContract.address    
@@ -46,8 +46,8 @@ contractInstance = VotingContract.at(deployedContract.address)
 //// --------- 3. Interact with the contract in the nodejs console
 
 // Vote
-contractInstance.voteForCandidate('Rama', {from: web3.eth.accounts[0]})
+contractInstance.voteForCandidate('Alex', {from: web3.eth.accounts[0]})
 
 // Get votes
-contractInstance.totalVotesFor.call('Rama').toLocaleString()
+contractInstance.totalVotesFor.call('Alex').toLocaleString()
     // '1'
