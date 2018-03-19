@@ -3,11 +3,16 @@
 Simple Voting DApp using Ethereum and React.
 
 ### 1. Screenshot:  
+
 <h1>
   <img src="./src/screenshot.jpg" width="700">  
 </h1>
 
 ### 2. Ethereum local blockchain & Smart Contract Setup (Server Side)
+
+<h1 align="center">
+  <img align="center" src="./src/app-diagram.png" width="450">  
+</h1>
 
 **Some key concepts:**
 
