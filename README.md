@@ -9,7 +9,33 @@ Simple Voting DApp using Ethereum and React.
 
 ### 2. Ethereum local blockchain & Smart Contract Setup (Server Side)
 
+**Some key concepts:**
+
+Local blockchain **ganache** creates 10 test accounts. 
+
 ``` 
+web3.eth.accounts[0]
+...
+web3.eth.accounts[9]
+```
+
+``` C++
+/// Deployment of smart contract
+// This is a write operation, and web3.eth.accounts[0] pays for this transaction  
+deployedContract = VotingContract.new(['Alex','Nick','Jose'],{data: byteCode, from: web3.eth.accounts[0], gas: 4700000})  
+
+/// Vote  
+// This is a write operation, and web3.eth.accounts[0] pays for this transaction  
+contractInstance.voteForCandidate('Alex', {from: web3.eth.accounts[0]})  
+
+/// Get votes  
+// This is a read operation which is free  
+contractInstance.totalVotesFor.call('Alex').toLocaleString()  // '1'  
+```
+
+**More:** 
+
+``` javascript
 //// 1. Setup
 mkdir & cd basic-voting-app  
 npm i ganache-cli web3@0.20.2  
