@@ -4,7 +4,7 @@ import './App.css';
 import Web3 from 'web3';
 
 // Note: Currently, these names are hardcoded in Ethereum contract
-const candidates = ['Rama', 'Nick', 'Jose'];
+const candidates = [0,1,2];
 
 class App extends Component {
   
@@ -12,10 +12,10 @@ class App extends Component {
     super(props);
 
     // Change contract address when a new contract is deployed and change abi as well when the interface changed.
-    this.web3 = new Web3(new Web3.providers.HttpProvider("http://gman-mac.localdomain:8545"));
-    const abi = JSON.parse('[{"constant":false,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"totalVotesFor","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"validCandidate","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"votesReceived","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"x","type":"bytes32"}],"name":"bytes32ToString","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"candidateList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"voteForCandidate","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"contractOwner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"inputs":[{"name":"candidateNames","type":"bytes32[]"}],"payable":false,"type":"constructor"}]');
+    this.web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.1.253:7545"));
+    const abi = JSON.parse('[{"constant":false,"inputs":[{"name":"candidate","type":"uint8"}],"name":"totalVotesFor","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"candidate","type":"uint8"}],"name":"validCandidate","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint8"}],"name":"votesReceived","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"x","type":"uint8"}],"name":"uint8ToString","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"candidateList","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"candidate","type":"uint8"}],"name":"voteForCandidate","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"contractOwner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"inputs":[{"name":"candidateNames","type":"uint8[]"}],"payable":false,"type":"constructor"}]');
     const votingContract = this.web3.eth.contract(abi);
-    this.contractInstance = votingContract.at('0x1183b7eabab95a19868eddb9a9628a292e5b1329');
+    this.contractInstance = votingContract.at('0xBc3495943e8Bc4f95068355fbE5A456ed19e7FcD');
 
     const votesCand1 = this.contractInstance.totalVotesFor.call(candidates[0]).toString();
     const votesCand2 = this.contractInstance.totalVotesFor.call(candidates[1]).toString();
@@ -27,10 +27,7 @@ class App extends Component {
   }
 
   voteForCandidate = (index) => {
-    this.contractInstance.voteForCandidate(candidates[index], {from: this.web3.eth.accounts[index]});      
-    const newVotes = this.state.votes;
-    newVotes[index] = this.contractInstance.totalVotesFor.call(candidates[index]).toString();
-    this.setState({votes: newVotes});
+    this.contractInstance.voteForCandidate(candidates[index], {from: this.web3.eth.accounts[0]});      
   }
 
   render() {
