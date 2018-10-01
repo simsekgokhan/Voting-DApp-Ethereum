@@ -2,6 +2,8 @@
 
 Simple Voting DApp using Ethereum and React.
 
+This project is slightly modified, React version of https://medium.com/@mvmurthy/full-stack-hello-world-voting-ethereum-dapp-tutorial-part-1-40d2d0d807c2.
+
 ### 1. Screenshot:  
 
 <h1>
@@ -130,4 +132,4 @@ contractInstance.totalVotesFor.call('Alex').toLocaleString()
 
 
 #### Note/References:  
-- This project is slightly modified, React version of https://medium.com/@mvmurthy/full-stack-hello-world-voting-ethereum-dapp-tutorial-part-1-40d2d0d807c2.
+
